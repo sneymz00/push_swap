@@ -14,7 +14,15 @@ typedef struct s_lst
 }				t_lst;
 
 /*MAIN*/
-int	is_alpha(char **str);
+
+/*CREATE A NODO*/
+void	**create_n(t_lst **init, int sze);
+
+/*INSERT NBR*/
+int	nbr_ndo(t_lst *data);
+
+/*FAIL MESSAGE*/
+char	*fail_malloc(t_lst **mtx);
 
 /*LIBFT*/
 long	ft_atoi(const char *str);

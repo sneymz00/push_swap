@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 10:24:29 by camurill          #+#    #+#             */
-/*   Updated: 2024/03/28 17:44:51 by camurill         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:57:46 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ static int	is_alpha(char **str)
 
 int	main(int argc, char **argv)
 {
-	int i;
+	int 	i;
+	t_lst	**ndo;
+	long	nbr;
 
 	i = 1;
 	if (argc > 1)
@@ -53,7 +55,13 @@ int	main(int argc, char **argv)
 			message_error();
 		while (argv[i])
 		{
-			/*Crate nodo*/
+			ndo = create_n(argv[i]);
+			if (!ndo)
+				exit(EXIT_FAILURE);
+			nbr = nbr_ndo(ndo, ft_atoi(argv[i]));
+			if (!nbr)
+				return (fail_malloc(ndo));
+			//printf("%i", nbr);
 		}
 	}
 	else

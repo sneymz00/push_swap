@@ -6,13 +6,13 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:12:33 by camurill          #+#    #+#             */
-/*   Updated: 2024/03/28 17:47:52 by camurill         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:58:32 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static char	*fail_malloc(t_lst **mtx)
+char	*fail_malloc(t_lst **mtx)
 {
 	int	i;
 
@@ -26,12 +26,12 @@ static char	*fail_malloc(t_lst **mtx)
 	return (NULL);
 }
 
-void	**create_n(t_lst **init, int sze) //Corregir
+void	**create_n(t_lst **init) //Corregir
 {
 	t_lst	*tmp;
 	if (!*init)
 	{
-		*init = (t_lst **)malloc(sizeof(int) * (sze + 1));
+		*init = (t_lst **)malloc(sizeof(int) * (#corrct + 1));
 		if (!init)
 			return (fail_malloc(init));
 		if (init)
