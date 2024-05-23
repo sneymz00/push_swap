@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   funtions.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/28 15:42:11 by camurill          #+#    #+#             */
-/*   Updated: 2024/03/28 16:50:36 by camurill         ###   ########.fr       */
+/*   Created: 2024/01/21 17:42:14 by camurill          #+#    #+#             */
+/*   Updated: 2024/01/23 18:18:23 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long	ft_atoi(const char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
-	long	value;
-	long	number;
 
 	i = 0;
-	value = 1;
-	number = 0;
-	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	while (s[i])
 	{
-		if (str[i] == '-')
-			value = -1;
+		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		number = number * 10 + str[i] - '0';
-		i++;
-	}
-	number = number * value;
-	return (number);
 }
