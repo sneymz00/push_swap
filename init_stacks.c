@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:12:33 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/23 18:37:57 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/24 19:30:33 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ long	my_atoi(const char *str)
 		i++;
 	}
 	return (number * value);
+}
+
+t_stack_node	*find_last(t_stack_node *top)
+{
+	if (top == NULL)
+		return (NULL);
+	while (top->next)
+		top = top->next;
+	return (top);
 }
 
 static void	node_to_append(t_stack_node **a, int n)
