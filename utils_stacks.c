@@ -6,30 +6,30 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 16:48:17 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/24 17:11:53 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/25 14:40:39 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack_node	*find_max(t_stack_node *stack)
+t_stack_node	*find_smallest(t_stack_node *stack)
 {
-	long			top;
-	t_stack_node	*top_node;
+	long			small;
+	t_stack_node	*small_node;
 
 	if (stack == NULL)
 		return (NULL);
-	top = LONG_MAX;
+	small = LONG_MAX;
 	while (stack)
 	{
-		if (stack->value > top)
+		if (stack->value < small)
 		{
-			top = stack->value;
-			top_node = stack;
+			small = stack->value;
+			small_node = stack;
 		}
 		stack = stack->next;
 	}
-	return (top_node);
+	return (small_node);
 }
 
 int	stack_len(t_stack_node *a)
@@ -47,9 +47,9 @@ int	stack_len(t_stack_node *a)
 	return (i);
 }
 
-t_stack_node	set_cheapest(t_stack_node *stack)
+t_stack_node	*return_cheapest(t_stack_node *stack)
 {
-	if (stack = NULL)
+	if (stack == NULL)
 		return (NULL);
 	while (stack)
 	{

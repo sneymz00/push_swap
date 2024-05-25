@@ -6,17 +6,17 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:23:09 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/24 18:43:20 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/25 15:16:00 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 /***SWAP***/
 
 static void	swap(t_stack_node **top)
 {
-	if (*top == NULL || top = NULL)
+	if (top == NULL || *top == NULL)
 		return ;
 	*top = (**top).next;
 	(*top)->prev->prev = *top;

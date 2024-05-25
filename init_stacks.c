@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:12:33 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/24 19:30:33 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/25 16:09:54 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	node_to_append(t_stack_node **a, int n)
 	}
 }
 
-void	init_stack(t_stack_node **a, char **ag)
+void	init_stack(t_stack_node **a, char **ag, bool frag)
 {
 	long	n;
 	int		i;
@@ -79,14 +79,16 @@ void	init_stack(t_stack_node **a, char **ag)
 	i = 0;
 	while (ag[i])
 	{
-		if (error_syntax(ag[1]))
-			message_error(a);
+		if (error_syntax(ag[i]))
+			message_error(a, ag, frag);
 		n = my_atoi(ag[i]);
 		if (n > INT_MAX || n < INT_MIN)
-			message_error(a);
+			message_error(a, ag, frag);
 		if (error_duplicate(*a, (int)n))
-			message_error(a);
+			message_error(a, ag, frag);
 		node_to_append(a, (int)n);
 		i++;
 	}
+	if (frag)
+		error_matrix(ag);
 }

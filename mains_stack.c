@@ -6,36 +6,62 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:26:00 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/24 19:30:31 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/25 15:30:41 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stack_shorted(t_stack_node *stack)
+static void	rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheap)
 {
-	if (!stack)
-		return (false);
-	while (stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
+	while (*a != cheap->target && *b != cheap)
+		rr(a, b, false);
+	set_current_position(*a);
+	set_current_position(*b);
 }
 
-void	sort_three(t_stack_node **a)
+static void	reverse_rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheap)
 {
-	t_stack_node	*big_node;
+	while (*a != cheap->target && *b != cheap)
+		rrr(a, b, false);
+	set_current_position(*a);
+	set_current_position(*b);
+}
 
-	big_node = find_max(*a);
-	if (big_node == *a)
-		ra(a, false);
-	else if ((*a)->next == big_node)
-		rra(a, false);
-	if ((*a)->value > (*a)->next->value)
-		sa(a, false); 
+void	finish_rotation(t_stack_node **stack, t_stack_node *top, char type)
+{
+	while (*stack != top)
+	{
+		if (type == 'a')
+		{
+			if (top->adove_mediam)
+				ra(stack, false);
+			else
+				rra(stack, false);
+		}
+		else if (type == 'b')
+		{
+			if (top->adove_mediam)
+				rb(stack, false);
+			else
+				rrb(stack, false);
+		}
+	}
+}
+
+static void	move_nodes(t_stack_node **a, t_stack_node **b)
+{
+	t_stack_node	*cheap_node;
+
+	cheap_node = return_cheapest(*b);
+	if (cheap_node->adove_mediam && cheap_node->target->adove_mediam)
+		rotate_both(a, b, cheap_node);
+	else if (!(cheap_node->adove_mediam) && 
+			!(cheap_node->target->adove_mediam))
+		reverse_rotate_both(a, b, cheap_node);
+	finish_rotation(b, cheap_node, 'b');
+	finish_rotation(a, cheap_node->target, 'a');
+	pa(a, b, false);
 }
 
 void	sort_stack(t_stack_node **a, t_stack_node **b)
@@ -43,20 +69,20 @@ void	sort_stack(t_stack_node **a, t_stack_node **b)
 	int	len_a;
 
 	len_a = stack_len(*a);
-	if (len_a-- > 3 && !s_stack_shorted(*a))
+	if (len_a-- > 3 && !stack_shorted(*a))
 		pb(b, a, false);
 	if (len_a-- > 3 && !stack_shorted(*a))
 		pb(b, a, false);
 	while (len_a-- > 3 && !stack_shorted(*a))
 	{
-		init_nodes_a(*a, *b, false);
-		pa(*a, *b, false);
+		init_node(*a, *b);
+		pa(a, b, false);
 	}
 	while(*b)
 	{
-		init_nodes_b(*a, *b);
-		pb(*b, *a, false);
+		init_node(*a, *b);
+		pb(b, a, false);
 	}
-	current_i(*a);
-	top_min_a(a);
+	set_current_position(*a);
+	//top_min_a(a);
 }

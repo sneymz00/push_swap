@@ -6,11 +6,11 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:43:51 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/24 18:42:54 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/25 15:19:05 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 static void	push(t_stack_node **dst, t_stack_node **src)
 {
@@ -23,7 +23,7 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 	if (*src)
 		(*src)->prev = NULL;
 	tmp->prev = NULL;
-	if (*dst = NULL)
+	if (*dst == NULL)
 	{
 		*dst = tmp;
 		tmp->next = NULL;
@@ -36,14 +36,14 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 	}
 }
 
-void	pa(t_stack_node *a, t_stack_node **b, bool type)
+void	pa(t_stack_node **a, t_stack_node **b, bool type)
 {
 	push(a, b);
 	if (!type)
 		write(1, "pa\n", 3);
 }
 
-void	pb(t_stack_node *b, t_stack_node **a, bool type)
+void	pb(t_stack_node **b, t_stack_node **a, bool type)
 {
 	push(b, a);
 	if (!type)
