@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:26:00 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/25 15:30:41 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/25 18:11:07 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,25 +64,46 @@ static void	move_nodes(t_stack_node **a, t_stack_node **b)
 	pa(a, b, false);
 }
 
+static void hadle_five(t_stack_node **a, t_stack_node **b)
+{
+	t_stack_node	*data;
+
+	while (stack_len(*a) > 3)
+	{
+		data = find_smallest(*a);
+		init_node(*a, *b);
+		finish_rotation(a, data, 'a');
+		pb(b, a, false);
+	}
+}
+
 void	sort_stack(t_stack_node **a, t_stack_node **b)
 {
+	t_stack_node	*small;
 	int	len_a;
 
 	len_a = stack_len(*a);
-	if (len_a-- > 3 && !stack_shorted(*a))
-		pb(b, a, false);
-	if (len_a-- > 3 && !stack_shorted(*a))
-		pb(b, a, false);
-	while (len_a-- > 3 && !stack_shorted(*a))
+	if (len_a == 5)
+		hadle_five(a, b);
+	else
 	{
-		init_node(*a, *b);
-		pa(a, b, false);
+		while(len_a-- < 3)
+			pb(b, a, false);
 	}
-	while(*b)
+	sort_three(a);
+	while(b)
 	{
 		init_node(*a, *b);
-		pb(b, a, false);
+		move_nodes(a, b);
 	}
 	set_current_position(*a);
-	//top_min_a(a);
+	small = find_smallest(*a);
+	if (small->adove_mediam)
+	{
+		while (*a != small)
+			ra(a, false);
+	}
+	else
+		while (*a != small)
+			rra(a, false);
 }

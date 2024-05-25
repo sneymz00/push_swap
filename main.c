@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 10:24:29 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/25 16:07:22 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/25 17:44:42 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ static t_stack_node	*find_max(t_stack_node *stack)
 		return (max_node);
 }
 
-int	stack_shorted(t_stack_node *stack)
+bool	stack_shorted(t_stack_node *stack)
 {
-	if (!stack)
-		return (false);
+	if (stack == NULL)
+		return (NULL);
 	while (stack->next)
 	{
 		if (stack->value > stack->next->value)
-			return (0);
+			return (false);
 		stack = stack->next;
 	}
-	return (1);
+	return (true);
 }
 
 void	sort_three(t_stack_node **a)

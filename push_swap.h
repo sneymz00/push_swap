@@ -27,7 +27,7 @@ void			init_stack(t_stack_node **a, char **ag, bool frag);
 t_stack_node	*find_last(t_stack_node *top);
 
 /*STAKS*/
-int				stack_shorted(t_stack_node *stack);
+bool			stack_shorted(t_stack_node *stack);
 void			sort_three(t_stack_node **a);
 void			sort_stack(t_stack_node **a, t_stack_node **b);
 
