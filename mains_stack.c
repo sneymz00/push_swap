@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:26:00 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/25 18:11:07 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/28 15:28:33 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void	sort_stack(t_stack_node **a, t_stack_node **b)
 			ra(a, false);
 	}
 	else
+	{
 		while (*a != small)
 			rra(a, false);
+	}
 }

@@ -1,6 +1,0 @@
-Me faltan funciones
-
-una que me mida la longitud de un stack stack_len
-una que me calcule el stack min
-Otra que me calcule el stack max
-Mejorar mi funcion de error_mesagge(char **error)

@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:49:49 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/25 16:14:05 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/28 15:37:25 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	error_duplicate(t_stack_node *a, int nbr)
 		return (0);
 	while (a)
 	{
-		if ((*a).value == nbr)
+		if (a->value == nbr)
 			return (1);
 		a = a->next;
 	}
