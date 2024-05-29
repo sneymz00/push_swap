@@ -6,17 +6,19 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:58:49 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/25 15:17:23 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:13:41 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void rotate(t_stack_node **stack)
+static void	rotate(t_stack_node **stack)
 {
 	t_stack_node	*last;
+	int				len;
 
-	if (stack == NULL || *stack == NULL)
+	len = stack_len(*stack);
+	if (stack == NULL || *stack == NULL || len == 1)
 		return ;
 	last = find_last(*stack);
 	last->next = *stack;

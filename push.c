@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:43:51 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/25 15:19:05 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:14:50 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,3 @@ void	pb(t_stack_node **b, t_stack_node **a, bool type)
 	if (!type)
 		write(1, "pb\n", 3);
 }
-

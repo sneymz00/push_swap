@@ -15,7 +15,8 @@ CCFLAGS	= 		-Wall -Wextra -Werror
 #									SRC										  #
 ###############################################################################
 
-SRC 	= 	main.c init_node.c init_stacks.c my_error.c mains_stack.c my_split.c\
+SRC 	= 	main.c init_node.c \
+			init_stacks.c my_error.c mains_stack.c my_split.c\
 			push.c reverse_rotate.c rotates.c swap.c utils_stacks.c
 
 OBJ 	= 		$(SRC:.c=.o)
@@ -30,7 +31,7 @@ OBJ 	= 		$(SRC:.c=.o)
 #									INLUDES									  #
 ###############################################################################
 
-
+INLUDE = push_swap.h
 
 ###############################################################################
 #									RULES									  #
@@ -38,10 +39,10 @@ OBJ 	= 		$(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) Makefile push_swap.h
-	$(CC) $(CCFLAGS) $(OBJ) $(NAME)
+$(NAME): $(OBJ) $(INCLUDE)
+	$(CC) $(CCFLAGS) -o $(NAME) $(OBJ) 
 
-%.o: %.c 
+%.o: %.c
 	$(CC) $(CCFLAGS) -c $< -o $@
 
 clean:

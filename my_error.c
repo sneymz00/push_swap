@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:49:49 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/28 15:37:25 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:07:11 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	error_matrix(char **matrix)
 		free(matrix[i]);
 		i++;
 	}
-	free(matrix);
+	free(matrix - 1);
 }
 
 void	message_error(t_stack_node **error, char **ag, bool frag)
@@ -49,7 +49,7 @@ void	message_error(t_stack_node **error, char **ag, bool frag)
 	free_stack(error);
 	if (frag)
 		error_matrix(ag);
-	write(1, "Error", 6);
+	write(2, "Error", 6);
 	exit(1);
 }
 

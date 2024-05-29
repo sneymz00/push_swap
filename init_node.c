@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 13:11:21 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/25 15:15:29 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:12:53 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 				best_index = node_a->value;
 				target = node_a;
 			}
-			node_a =  node_a->next;
+			node_a = node_a->next;
 		}
 		if (best_index == LONG_MAX)
 			b->target = find_smallest(a);

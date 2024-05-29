@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:26:00 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/28 15:28:33 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:02:27 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,10 @@ static void	move_nodes(t_stack_node **a, t_stack_node **b)
 
 static void hadle_five(t_stack_node **a, t_stack_node **b)
 {
-	t_stack_node	*data;
-
 	while (stack_len(*a) > 3)
 	{
-		data = find_smallest(*a);
 		init_node(*a, *b);
-		finish_rotation(a, data, 'a');
+		finish_rotation(a, find_smallest(*a), 'a');
 		pb(b, a, false);
 	}
 }
@@ -80,18 +77,18 @@ static void hadle_five(t_stack_node **a, t_stack_node **b)
 void	sort_stack(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*small;
-	int	len_a;
+	int				len_a;
 
 	len_a = stack_len(*a);
 	if (len_a == 5)
 		hadle_five(a, b);
 	else
 	{
-		while(len_a-- < 3)
+		while(len_a-- > 3)
 			pb(b, a, false);
 	}
 	sort_three(a);
-	while(b)
+	while(*b)
 	{
 		init_node(*a, *b);
 		move_nodes(a, b);

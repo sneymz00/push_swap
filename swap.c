@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:23:09 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/25 15:16:00 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:13:48 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@
 
 static void	swap(t_stack_node **top)
 {
-	if (top == NULL || *top == NULL)
+	int	len;
+
+	len = stack_len(*top);
+	if (top == NULL || *top == NULL || len == 1)
 		return ;
-	*top = (**top).next;
+	*top = (*top)->next;
 	(*top)->prev->prev = *top;
 	(*top)->prev->next = (*top)->next;
 	if ((*top)->next)

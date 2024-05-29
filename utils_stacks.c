@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 16:48:17 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/25 14:40:39 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:13:57 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	stack_len(t_stack_node *a)
 {
 	int	i;
 
-	i = 0;
 	if (a == NULL)
 		return (0);
+	i = 0;
 	while (a)
 	{
 		i++;

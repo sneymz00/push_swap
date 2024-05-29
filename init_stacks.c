@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:12:33 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/25 16:09:54 by camurill         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:43:56 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ long	my_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		number = number * 10 + str[i] - '0';
+		number = number * 10 + (str[i] - '0');
 		i++;
 	}
 	return (number * value);
