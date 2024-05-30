@@ -40,7 +40,7 @@ INLUDE = push_swap.h
 all: $(NAME)
 
 $(NAME): $(OBJ) $(INCLUDE)
-	$(CC) $(CCFLAGS) -o $(NAME) $(OBJ) 
+	$(CC) $(CCFLAGS) libft.a -o $(NAME) $(OBJ) 
 
 %.o: %.c
 	$(CC) $(CCFLAGS) -c $< -o $@
