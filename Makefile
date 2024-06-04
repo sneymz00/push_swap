@@ -3,6 +3,8 @@
 ###############################################################################
 NAME 		= 		push_swap
 RM 			= 		rm -f
+LIBFT		=		libreries/libft/libft.a
+OBJS			= 		obj/
 
 ###############################################################################
 #									COMPILER								  #
@@ -19,8 +21,6 @@ SRC 	= 	main.c init_node.c \
 			init_stacks.c my_error.c mains_stack.c my_split.c\
 			push.c reverse_rotate.c rotates.c swap.c utils_stacks.c
 
-OBJ 	= 		$(SRC:.c=.o)
-
 ###############################################################################
 #						          SRC BONUS			   						  #
 ###############################################################################
@@ -31,7 +31,8 @@ OBJ 	= 		$(SRC:.c=.o)
 #									INLUDES									  #
 ###############################################################################
 
-INLUDE = push_swap.h
+INLUDE  = push_swap.h
+OBJ_DIR = $(patsubst %.c, $(OBJS)%.o, $(SRC))
 
 ###############################################################################
 #									RULES									  #
@@ -39,14 +40,17 @@ INLUDE = push_swap.h
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(INCLUDE)
-	$(CC) $(CCFLAGS) libft.a -o $(NAME) $(OBJ) 
+$(NAME): $(OBJ_DIR) $(LIBFT)
+	$(CC) $(CCFLAGS) $(OBJ_DIR) $(LIBFT) -o $(NAME)  
 
-%.o: %.c
+$(OBJS)%.o: %.c Makefile push_swap.h
+	@mkdir -p $(OBJS)
+	@make -C libreries/libft &> /dev/null
 	$(CC) $(CCFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ) $(BONUSOBJ)
+	$(RM) $(OBJS)
+	make -C libreries/libft clean --no-print-directory
 
 fclean: clean
 	$(RM) $(NAME)

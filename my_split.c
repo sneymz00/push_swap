@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nikitadorofeychik <nikitadorofeychik@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:22:20 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/30 15:58:52 by camurill         ###   ########.fr       */
+/*   Updated: 2024/06/03 19:23:23 by nikitadorof      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ static char *my_dupchar(char const *s, char c, int *pos)
 	dup = malloc(sizeof(char) * (len + 1));
 	if (!dup)
 		return (NULL);
+	if (*s == '-' || *s == '+')
+		*pos += 1;
 	while (i < len)
 	{
 		dup[i] = *s;
@@ -83,17 +85,21 @@ char	**ft_mysplit(char const *s, char c)
 	int 	word_count;
 	char	**split;
 	int		i;
+	int		j;
 	int		pos;
 
 	if (!s)
 		return (NULL);
 	i = 0;
+	j = 0;
 	pos = 0;
 	word_count = ft_count_word(s, c);
 	split = malloc(sizeof(char *) * (size_t)(word_count + 2));
 	if (!split)
 		return (NULL);
 	split[i++] = ft_strdup("./push_swap");
+	while (s[j++] == '-')
+		word_count--;
 	while (i < word_count + 1)
 	{
 		split[i] = my_dupchar(s + pos, c, &pos);
@@ -106,6 +112,9 @@ char	**ft_mysplit(char const *s, char c)
 }
 
 /*
+El error que tengo es que en mi split
+me guarda el (-) como un numero más que split
+y me da el numero nulo, por eso sale error
 int main(void)
 {
 	char const *p = "hello!    222";
