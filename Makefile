@@ -1,41 +1,41 @@
 ###############################################################################
-#									STANDARS								  #
+#				STANDARS				      #
 ###############################################################################
 NAME 		= 		push_swap
-RM 			= 		rm -f
+RM 			= 		rm -rf
 LIBFT		=		libreries/libft/libft.a
-OBJS			= 		obj/
+OBJS		= 		obj/
 
 ###############################################################################
-#									COMPILER								  #
+#				COMPILER				      #
 ###############################################################################
 
-CC 		= 		gcc
-CCFLAGS	= 		-Wall -Wextra -Werror
+CC 		= 		gcc -g
+CCFLAGS	= 		-Wall -Wextra -Werror 
 
 ###############################################################################
-#									SRC										  #
+#				SRC					      #
 ###############################################################################
 
-SRC 	= 	main.c init_node.c \
+SRC 	= 	main.c init_node.c aux_stacks.c\
 			init_stacks.c my_error.c mains_stack.c my_split.c\
 			push.c reverse_rotate.c rotates.c swap.c utils_stacks.c
 
 ###############################################################################
-#						          SRC BONUS			   						  #
+#				SRC BONUS	   	     		      #
 ###############################################################################
 
 
 
 ###############################################################################
-#									INLUDES									  #
+#				INLUDES					      #
 ###############################################################################
 
-INLUDE  = push_swap.h
+INCLUDE  = push_swap.h
 OBJ_DIR = $(patsubst %.c, $(OBJS)%.o, $(SRC))
 
 ###############################################################################
-#									RULES									  #
+#				RULES					      #
 ###############################################################################
 
 all: $(NAME)
@@ -45,12 +45,12 @@ $(NAME): $(OBJ_DIR) $(LIBFT)
 
 $(OBJS)%.o: %.c Makefile push_swap.h
 	@mkdir -p $(OBJS)
-	@make -C libreries/libft &> /dev/null
+	@make -C libreries/libft
 	$(CC) $(CCFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
-	make -C libreries/libft clean --no-print-directory
+	@make -C libreries/libft clean --no-print-directory
 
 fclean: clean
 	$(RM) $(NAME)

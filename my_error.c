@@ -6,13 +6,13 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:49:49 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/31 15:19:40 by camurill         ###   ########.fr       */
+/*   Updated: 2024/06/06 13:59:31 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void free_stack(t_stack_node **stack)
+void	free_stack(t_stack_node **stack)
 {
 	t_stack_node	*tmp;
 	t_stack_node	*now;
@@ -49,18 +49,15 @@ void	message_error(t_stack_node **error, char **ag, bool frag)
 	free_stack(error);
 	if (frag)
 		error_matrix(ag);
-	write(2, "Error", 6);
+	write(2, "Error\n", 7);
 	exit(1);
 }
 
-
 int	error_syntax(char *str)
 {
-	if (!(*str == '+' || *str == '-' ||
-		(*str >= '0' && *str <= '9')))
+	if (!(*str == '+' || *str == '-' || (*str >= '0' && *str <= '9')))
 		return (1);
-	if ((*str == '-' || *str == '+') &&
-		!(str[1] >= '0' && str[1] <= '9'))
+	if ((*str == '-' || *str == '+') && !(str[1] >= '0' && str[1] <= '9'))
 		return (1);
 	while (*++str)
 	{

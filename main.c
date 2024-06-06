@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 10:24:29 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/29 19:04:07 by camurill         ###   ########.fr       */
+/*   Updated: 2024/06/06 13:54:29 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static t_stack_node	*find_max(t_stack_node *stack)
 {
-		int				max;
-		t_stack_node	*max_node;
+	int				max;
+	t_stack_node	*max_node;
 
-		if (stack == NULL)
-			return (NULL);
-		max = INT_MIN;
-		while (stack)
+	if (stack == NULL)
+		return (NULL);
+	max = INT_MIN;
+	while (stack)
+	{
+		if (stack->value > max)
 		{
-			if (stack->value > max)
-			{
-				max = stack->value;
-				max_node = stack;
-			}
-			stack = stack->next;
+			max = stack->value;
+			max_node = stack;
 		}
-		return (max_node);
+		stack = stack->next;
+	}
+	return (max_node);
 }
 
 bool	stack_shorted(t_stack_node *stack)
@@ -45,6 +45,16 @@ bool	stack_shorted(t_stack_node *stack)
 	return (true);
 }
 
+void	hadle_five(t_stack_node **a, t_stack_node **b)
+{
+	while (stack_len(*a) > 3)
+	{
+		init_node(*a, *b);
+		finish_rotation(a, find_smallest(*a), 'a');
+		pb(b, a, false);
+	}
+}
+
 void	sort_three(t_stack_node **a)
 {
 	t_stack_node	*big_node;
@@ -55,7 +65,7 @@ void	sort_three(t_stack_node **a)
 	else if ((*a)->next == big_node)
 		rra(a, false);
 	if ((*a)->value > (*a)->next->value)
-		sa(a, false); 
+		sa(a, false);
 }
 
 int	main(int argc, char **argv)
