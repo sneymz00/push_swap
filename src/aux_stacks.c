@@ -6,11 +6,11 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:26:00 by camurill          #+#    #+#             */
-/*   Updated: 2024/06/06 14:16:57 by camurill         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:33:14 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheap)
 {

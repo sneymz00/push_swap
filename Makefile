@@ -1,59 +1,71 @@
 ###############################################################################
-#				STANDARS				      #
+#								STANDARS	 								  #
 ###############################################################################
 NAME 		= 		push_swap
 RM 			= 		rm -rf
 LIBFT		=		libreries/libft/libft.a
+LIBFT_DIR	=		lbreries/libft/
 OBJS		= 		obj/
+SRC_DIR		=		src/
 
 ###############################################################################
-#				COMPILER				      #
+#								COMPILER	  								  #
 ###############################################################################
 
-CC 		= 		gcc -g
-CCFLAGS	= 		-Wall -Wextra -Werror 
+CC 			= 		gcc -g
+CCFLAGS		= 		-Wall -Wextra -Werror -fsanitize=leak 
 
 ###############################################################################
-#				SRC					      #
+#									SRC    									  #
 ###############################################################################
 
-SRC 	= 	main.c init_node.c aux_stacks.c\
-			init_stacks.c my_error.c mains_stack.c my_split.c\
-			push.c reverse_rotate.c rotates.c swap.c utils_stacks.c
+SRC 		= 		$(SRC_DIR)main.c\
+								$(SRC_DIR)init_node.c\
+								$(SRC_DIR)aux_stacks.c\
+								$(SRC_DIR)init_stacks.c\
+								$(SRC_DIR)my_error.c\
+								$(SRC_DIR)mains_stack.c\
+								$(SRC_DIR)my_split.c\
+								$(SRC_DIR)push.c\
+								$(SRC_DIR)reverse_rotate.c\
+								$(SRC_DIR)rotates.c\
+								$(SRC_DIR)swap.c\
+								$(SRC_DIR)utils_stacks.c
 
 ###############################################################################
-#				SRC BONUS	   	     		      #
-###############################################################################
-
-
-
-###############################################################################
-#				INLUDES					      #
+#								INLUDES	      								  #
 ###############################################################################
 
 INCLUDE  = push_swap.h
-OBJ_DIR = $(patsubst %.c, $(OBJS)%.o, $(SRC))
+OBJ_DIR = $(patsubst $(SRC_DIR)%.c, $(OBJS)%.o, $(SRC))
 
 ###############################################################################
-#				RULES					      #
+#								RULES	      								  #
 ###############################################################################
 
-all: $(NAME)
+all:
+	@make -C libreries/libft --no-print-directory
+	@make $(NAME) --no-print-directory
 
-$(NAME): $(OBJ_DIR) $(LIBFT)
-	$(CC) $(CCFLAGS) $(OBJ_DIR) $(LIBFT) -o $(NAME)  
+$(NAME):: $(OBJ_DIR) $(LIBFT)
+	@echo "Compiling $<"
+	@$(CC) $(CCFLAGS) $(LIBFT) $(OBJ_DIR) -o $(NAME)
+$(NAME)::
+	@echo "$(NAME) compiled"
 
-$(OBJS)%.o: %.c Makefile push_swap.h
+$(OBJS)%.o: $(SRC_DIR)%.c Makefile $(INCLUDE) $(LIBFT) 
+	@echo "Compiling $<"
 	@mkdir -p $(OBJS)
-	@make -C libreries/libft
-	$(CC) $(CCFLAGS) -c $< -o $@
+	@$(CC) $(CCFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	@echo "Cleaning up..."
+	@$(RM) $(OBJS)
 	@make -C libreries/libft clean --no-print-directory
 
 fclean: clean
-	$(RM) $(NAME)
+	@echo "Cleaning file..."
+	@$(RM) $(NAME)
 
 re: fclean all
 

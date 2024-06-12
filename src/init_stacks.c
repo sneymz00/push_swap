@@ -6,11 +6,11 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:12:33 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/29 18:43:56 by camurill         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:33:42 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 long	my_atoi(const char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:49:49 by camurill          #+#    #+#             */
-/*   Updated: 2024/06/06 13:59:31 by camurill         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:34:09 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	free_stack(t_stack_node **stack)
 {

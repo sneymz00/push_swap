@@ -6,11 +6,11 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 10:24:29 by camurill          #+#    #+#             */
-/*   Updated: 2024/06/06 13:54:29 by camurill         ###   ########.fr       */
+/*   Updated: 2024/06/12 19:19:36 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static t_stack_node	*find_max(t_stack_node *stack)
 {
@@ -78,8 +78,8 @@ int	main(int argc, char **argv)
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
-		argv = ft_mysplit(argv[1], ' ');
-	init_stack(&a, argv + 1, argc == 2);
+		argv = ft_mysplit(argv[1], ' ') - 1;
+	init_stack(&a, argv, argc == 2);
 	if (!stack_shorted(a))
 	{
 		if (stack_len(a) == 2)
@@ -89,5 +89,7 @@ int	main(int argc, char **argv)
 		else
 			sort_stack(&a, &b);
 	}
+	if (argc == 2)
+		error_matrix(argv);
 	free_stack(&a);
 }

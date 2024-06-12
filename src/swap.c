@@ -6,11 +6,11 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:23:09 by camurill          #+#    #+#             */
-/*   Updated: 2024/05/29 19:13:48 by camurill         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:35:22 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 /***SWAP***/
 

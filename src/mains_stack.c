@@ -6,11 +6,11 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:26:00 by camurill          #+#    #+#             */
-/*   Updated: 2024/06/06 14:25:08 by camurill         ###   ########.fr       */
+/*   Updated: 2024/06/10 13:08:46 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	move_nodes(t_stack_node **a, t_stack_node **b)
 {

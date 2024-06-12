@@ -22,19 +22,23 @@ BONUSOBJ = $(BONUSSRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(INCLUDE)
-	$(LIB) $(NAME) $(OBJ)
+	@echo "Linking Libft..."
+	@$(LIB) $(NAME) $(OBJ)
 
 bonus: $(OBJ) $(BONUSOBJ) $(INCLUDE)
-	$(LIB) $(NAME) $(BONUSOBJ) $(OBJ)
+	@$(LIB) $(NAME) $(BONUSOBJ) $(OBJ)
 
 %.o: %.c Makefile libft.h
-	$(CC) $(CCFLAGS) -c -o $@ $<
+	@echo "Compiling libft..."
+	@$(CC) $(CCFLAGS) -c -o $@ $<
 
 clean:
-	$(RM) $(OBJ) $(BONUSOBJ)
+	@echo "Clean file Libft"
+	@$(RM) $(OBJ) $(BONUSOBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	@echo "Clean libft.a"
+	@$(RM) $(NAME)
 
 re: fclean all
 
