@@ -6,7 +6,7 @@
 /*   By: nikitadorofeychik <nikitadorofeychik@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:22:20 by camurill          #+#    #+#             */
-/*   Updated: 2024/06/12 19:19:34 by camurill         ###   ########.fr       */
+/*   Updated: 2024/06/15 15:28:21 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ static char	*my_dupchar(char const *s, char c)
 	len = 0;
 	while (s[din] == c && s[din])
 		din++;
-	while (s[din + len] != c && s[din + len])
+	while ((s[din + len] != c) && s[din + len])
 		len++;
-	dup = malloc(sizeof(char) * (len + 1));
+	dup = malloc(sizeof(char) * (size_t)len + 1);
 	if (!dup)
 		return (NULL);
 	while (s[din] != c && s[din])
@@ -84,19 +84,19 @@ char	**ft_mysplit(char const *s, char c)
 		return (NULL);
 	i = 0;
 	word_count = ft_count_word(s, c);
-	split = malloc(sizeof(char *) * (size_t)(word_count + 1));
+	split = malloc(sizeof(char *) * (size_t)(word_count + 2));
 	if (!split)
 		return (NULL);
 	while (word_count-- >= 0)
 	{
-		/*if (i == 0)
+		if (i == 0)
 		{
 			split[i] = malloc(sizeof(char));
-			if (split[i] == NULL)
-				return (free(split), NULL);
-			split[i++] = '\0';
+			if (!split[i])
+				return (NULL);
+			split[i++][0] = '\0';
 			continue ;
-		}*/
+		}
 		split[i++] = my_dupchar(s, c);
 	}
 	split[i] = NULL;

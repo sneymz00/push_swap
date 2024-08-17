@@ -12,8 +12,8 @@ SRC_DIR		=		src/
 #								COMPILER	  								  #
 ###############################################################################
 
-CC 			= 		gcc -g
-CCFLAGS		= 		-Wall -Wextra -Werror -fsanitize=leak 
+CC 			= 		gcc
+CCFLAGS		= 		-Wall -Wextra -Werror 
 
 ###############################################################################
 #									SRC    									  #

@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:12:33 by camurill          #+#    #+#             */
-/*   Updated: 2024/06/06 14:15:46 by camurill         ###   ########.fr       */
+/*   Updated: 2024/06/15 16:49:54 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdbool.h>
-# include "libreries/ft_printf/ft_printf.h"
 # include "libreries/libft/libft.h"
 
 typedef struct s_stack_node

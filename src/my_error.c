@@ -6,7 +6,7 @@
 /*   By: camurill <camurill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:49:49 by camurill          #+#    #+#             */
-/*   Updated: 2024/06/10 12:34:09 by camurill         ###   ########.fr       */
+/*   Updated: 2024/06/15 15:24:38 by camurill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,11 @@ void	error_matrix(char **matrix)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	if (matrix == NULL || *matrix == NULL)
 		return ;
 	while (matrix[i])
-	{
-		free(matrix[i]);
-		i++;
-	}
+		free(matrix[i++]);
 	free(matrix - 1);
 }
 
